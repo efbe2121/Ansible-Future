@@ -1,0 +1,19 @@
+---
+# This task's solely purpose to check if
+# MongoDB repository and package has been 
+# Installed or not
+
+- name: Checking repository...
+  stat: 
+    path: "/etc/yum.repos.d/mongodb-org-{{ mongo_version }}.repo"
+  register: existence
+
+- name: Checking package
+  package_facts:
+    manager: auto
+  when: existence.stat is defined
+
+- name: Register stats
+  set_fact:
+    mongo_existence: True
+  when: "existence.stat is defined and 'mongodb-org' in ansible_facts.packages"

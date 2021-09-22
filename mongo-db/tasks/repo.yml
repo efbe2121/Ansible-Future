@@ -1,0 +1,7 @@
+- name: Fetching the repository
+  template:
+    src: "templates/mongodb-org.repo.j2"
+    dest: "/etc/yum.repos.d/mongodb-org-{{ mongo_version }}.repo"
+    owner: root
+    group: root
+    mode: "0644"

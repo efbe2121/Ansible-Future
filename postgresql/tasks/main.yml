@@ -1,0 +1,9 @@
+---
+# tasks file for postgresql
+- include_tasks: check.yml
+
+- include_tasks: install.yml
+  when: postgresql_existence == False
+
+- include_tasks: initialize.yml
+  when: postgresql_existence == True and pgdata_dir_version.stat is not defined

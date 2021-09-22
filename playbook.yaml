@@ -1,0 +1,8 @@
+- name: Ansible-role
+  become: yes
+  hosts: dummy
+  gather_facts: no
+
+  roles:
+    - role: mongo-db
+    - role: postgresql

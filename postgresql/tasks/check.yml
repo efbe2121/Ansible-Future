@@ -1,0 +1,15 @@
+---
+- name: Initialize package fact...
+  package_facts:
+    manager: auto
+
+- name: Check if postgresql is installed
+  set_fact:
+    postgresql_existence: True
+  when: "'postgresql-server' in ansible_facts.packages"
+
+- name: Check if PostgreSQL database is initialized.
+  stat:
+    path: "{{ postgresql_data_dir }}/PG_VERSION"
+  register: pgdata_dir_version
+  when: postgresql_existence == True

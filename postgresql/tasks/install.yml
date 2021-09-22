@@ -1,0 +1,7 @@
+- name: Installing PostgreSQL...
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ postgresql_packages }}"
+  vars:
+    ansible_python_interpreter: /usr/bin/python

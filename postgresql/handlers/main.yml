@@ -1,0 +1,13 @@
+---
+# handlers file for postgresql
+- name: ReloadSystemdDaemon
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: EnablePostgreSQL
+  become: yes
+  service:
+    state: started
+    name: postgresql
+    enabled: yes

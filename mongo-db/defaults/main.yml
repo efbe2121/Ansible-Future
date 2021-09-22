@@ -1,0 +1,16 @@
+---
+# At here lies the 
+# information about the machine
+# that is currently being targeted
+
+release_ver: 7
+mongo_existence: False
+mongo_repository_new: False
+
+# And below lies all the information about
+# the current app's repository information
+
+mongo_version: 5.0
+mongo_repository_name: "MongoDB Repository"
+mongo_repository_url: "https://repo.mongodb.org/yum/redhat/{{ release_ver }}/mongodb-org/{{ mongo_version }}/x86_64/"
+mongo_repository_key: "https://www.mongodb.org/static/pgp/server-{{ mongo_version }}.asc"

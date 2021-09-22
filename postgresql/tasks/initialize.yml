@@ -1,0 +1,12 @@
+- name: Initialize PostgreSQL Database
+  shell:
+    cmd: |
+      postgresql-setup initdb
+  when: not pgdata_dir_version.stat.exists
+  become: true
+  notify:
+    - ReloadSystemdDaemon
+    - EnablePostgreSQL
+  
+- name: Run handlers before other tasks
+  meta: flush_handlers

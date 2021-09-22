@@ -1,0 +1,9 @@
+---
+# tasks file for mongo-db
+- include_tasks: check.yml
+
+- include_tasks: repo.yml
+  when: existence.stat is not defined or mongo_repository_new == True
+
+- include_tasks: install.yml
+  when: mongo_existence == False
